@@ -4,6 +4,7 @@ import { getSortedPostsData } from '../lib/posts'
 import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
 import Date from '../components/date'
+import { GetStaticProps, GetStaticPaths, GetServerSideProps } from 'next'
 
 export default function Home({allPostsData }) {
     return (
@@ -40,7 +41,7 @@ export default function Home({allPostsData }) {
     )
 }
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async function (context ) {
     const allPostsData = getSortedPostsData()
     return {
         props: {
